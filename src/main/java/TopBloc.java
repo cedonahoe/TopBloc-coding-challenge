@@ -140,8 +140,16 @@ public class TopBloc {
         post.setEntity(params);
 
         HttpResponse listen = client.execute(post);
-        System.out.println(listen);
+        String str = listen.getStatusLine().toString();
 
+        // prints if the statusLine doesn't have code of 200 OK
+
+        if (str.indexOf("200") != 9) {
+            System.out.println("Post request returned an error");
+        }
+
+        // given the single POST request I didn't implement error handling for different status codes. If it failed then
+        // you can just run the program again
 
     }
 
